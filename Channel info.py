@@ -2675,7 +2675,7 @@ def menu():
 
         choice = input(
             YELLOW
-            + "SELECT > "
+            + "Channel info @ Dark 47> "
             + RESET
         ).strip()
 
@@ -2701,7 +2701,7 @@ def menu():
 
             print(
                 GREEN
-                + "CHANNEL INFO CLOSED."
+                + "CHANNEL INFO SHUTDOWN."
                 + RESET
             )
 
