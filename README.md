@@ -2,26 +2,46 @@
 
 Worldwide News Channel & Website Information Scanner
 
-«Authorized information-gathering and technical inspection tool for public news websites.»
-
 Made by DARK 47
 
 ---
 
-📡 What Can This Tool Scan?
+📡 About
 
-CHANNEL INFO ENGINE is designed specifically for news channels and news websites from around the world.
+CHANNEL INFO ENGINE is a Python-based Termux tool designed to identify and inspect approved news channels and news websites from around the world.
 
-You can enter either:
+The tool accepts a news channel name, domain, or URL and displays detailed publicly available technical information.
 
-- News channel name
-- News website/domain
-- Full news website URL
-- News website URL with a path
+It is designed specifically for news websites/channels, rather than acting as a general-purpose website scanner.
 
-🌍 Supported Regions
+---
 
-The database includes news sources from many regions, including:
+✨ Features
+
+- 🌍 Worldwide news-source database
+- 📺 TV news channels
+- 📰 Newspapers and online news websites
+- 🔎 Search by channel name
+- 🌐 Search by domain
+- 🔗 Full URL support
+- 🧹 URL/domain normalization
+- 🚫 Rejects non-approved/random websites
+- 📡 DNS information
+- 🔎 DNS records
+- 🌐 IP information
+- 🏢 ASN / ISP information
+- 🔐 HTTP / HTTPS information
+- 🛡️ Security headers
+- 🔒 SSL/TLS certificate information
+- ☁️ CDN detection
+- 📋 WHOIS information when available
+- 💾 JSON report saving  
+
+---
+
+🌎 Worldwide News Sources
+
+The database contains news sources from multiple countries and regions.
 
 🇵🇰 Pakistan
 
@@ -182,21 +202,29 @@ The database includes news sources from many regions, including:
 - HaberTürk
 - NTV
 
-🇫🇷 France / 🇩🇪 Germany / 🇪🇸 Spain / 🇮🇹 Italy
+🇫🇷 France
 
 - France 24
 - RFI
 - Le Monde
 - Le Figaro
+
+🇩🇪 Germany
+
 - Deutsche Welle
 - Der Spiegel
 - Tagesschau
 - ZDF
 - ARD
-- Euronews
+
+🇪🇸 Spain
+
 - El País
 - RTVE
 - La Vanguardia
+
+🇮🇹 Italy
+
 - Corriere della Sera
 - La Repubblica
 - ANSA
@@ -282,7 +310,7 @@ The database includes news sources from many regions, including:
 - El Comercio
 - El Universo
 
-🌐 International News
+🌐 International
 
 - Associated Press
 - Reuters
@@ -292,21 +320,92 @@ The database includes news sources from many regions, including:
 - Radio Free Asia
 - UN News
 
+«The database is curated and can be expanded with additional legitimate news sources.»
+
 ---
 
-🔎 Input Examples
+📸 Screenshot
 
-You can enter:
+"CHANNEL INFO ENGINE Screenshot" (Screenshot_20260913_105737_Termux.jpg)
+
+---
+
+📱 Installation on Termux
+
+1. Update Termux
+
+Open Termux and run:
+
+pkg upgrade -y
+
+2. Install Python and Git
+
+pkg install python git -y
+
+Check the installation:
+
+python --version
+
+git --version
+
+---
+
+📥 Download from GitHub
+
+Clone the official repository:
+
+git clone https://github.com/darkfourty7-cyberwarrior/CHANNEL-INFO.git
+
+Enter the project:
+
+cd CHANNEL-INFO
+
+---
+
+▶️ Run the Tool
+
+The main file is:
+
+Channel info.py
+
+Run:
+
+python "Channel info.py"
+
+---
+
+🔎 Usage Examples
+
+Enter a channel name:
 
 CNN
 
+Enter a domain:
+
 cnn.com
 
+Enter a full URL:
+
 https://www.cnn.com/world
+
+Other examples:
 
 BBC News
 
 Al Jazeera
+
+Reuters
+
+---
+
+✅ Accepted Input
+
+CNN                 ✅
+cnn.com             ✅
+https://cnn.com     ✅
+BBC News            ✅
+Al Jazeera          ✅
+Reuters             ✅
 
 The tool normalizes the input and checks it against the approved news-source database.
 
@@ -314,54 +413,159 @@ The tool normalizes the input and checks it against the approved news-source dat
 
 🚫 Non-News Websites
 
-CHANNEL INFO ENGINE is intended for news websites/channels only.
+The tool is focused on approved news sources.
 
-Random websites that are not present in the approved news database are rejected instead of being treated as news sources.
+Random or non-approved domains are rejected.
 
 Example:
 
-CNN              ✅ Allowed
-BBC News         ✅ Allowed
-Al Jazeera       ✅ Allowed
-cnn.com          ✅ Allowed
-random-site.com  ❌ Rejected
+random-site.com       ❌
+example.com            ❌
+unknown-domain.com     ❌
 
 ---
 
-📊 Information Collected
+📊 Scan Information
 
-For an approved public news website, the tool can display information such as:
+For an approved public news website, the tool can display detailed information.
 
-- DNS information
-- DNS records
-- IP addresses
+DNS INFORMATION
+
+- Hostname
+- Resolved addresses
+- DNS status
+
+DNS RECORDS
+
+- A
+- AAAA
+- MX
+- NS
+- TXT
+
+IP / NETWORK INFORMATION
+
+- Public IP
 - ASN
-- ISP / network information
-- HTTP / HTTPS response
-- HTTP security headers
-- SSL/TLS information
-- TLS certificate details
-- CDN detection
-- WHOIS information when available
-- Scan timestamp
+- ISP
+- Network information
+- Country information when available
 
-Reports can also be saved locally in JSON format.
+HTTP / HTTPS INFORMATION
+
+- HTTP status
+- HTTPS status
+- Response information
+- HTTP headers
+- Security headers
+
+SSL / TLS INFORMATION
+
+- TLS version
+- Cipher
+- Certificate subject
+- Certificate issuer
+- Certificate serial
+- Valid-from date
+- Valid-until date
+
+CDN DETECTION
+
+The tool attempts to identify commonly used CDN/network providers.
+
+WHOIS INFORMATION
+
+WHOIS information is displayed when available.
+
+If WHOIS is unavailable, the rest of the scan can continue normally.
 
 ---
 
-⚠️ Important
+💾 Reports
 
-The database is a curated worldwide news-source database, not a claim that every news website on Earth is permanently included.
+Scan reports are saved locally in:
 
-News websites can change domains, shut down, launch new domains, or appear after the database was created.
+channel_info_reports/
 
-The tool performs public information gathering and technical inspection. It does not bypass authentication, exploit websites, or access private systems.
+Example:
+
+channel_info_reports/cnn_com.json
+
+Reports contain information collected during the scan.
+
+---
+
+🔄 Update the Tool
+
+To update the project:
+
+cd CHANNEL-INFO
+git pull
+
+Then run:
+
+python "Channel info.py"
+
+---
+
+🗑️ Remove the Tool
+
+To remove the project from Termux:
+
+cd ..
+rm -rf CHANNEL-INFO
+
+---
+
+🛠️ Requirements
+
+- Android
+- Termux
+- Python 3
+- Git
+- Internet connection
+
+---
+
+⚠️ Disclaimer
+
+CHANNEL INFO ENGINE is intended for authorized research, public-information gathering, and technical inspection of public news websites.
+
+The tool does not provide:
+
+- Authentication bypass
+- Password theft
+- Credential harvesting
+- Exploitation
+- Unauthorized system access
+- Private-data access
+- Security-control bypass
+
+Use the tool responsibly and only against systems and information you are authorized to inspect.
 
 ---
 
 👤 Author
 
-Made by DARK 47
+DARK 47
 
 CHANNEL INFO ENGINE
-Worldwide News Channel & Website Information Scanner
+
+🌍 Worldwide News
+📡 Channel Information
+🌐 Website Information
+🔎 Public Technical Data
+
+---
+
+⭐ GitHub Repository
+
+Official repository:
+
+https://github.com/darkfourty7-cyberwarrior/CHANNEL-INFO
+
+If you find the project useful, consider giving the repository a ⭐.
+
+---
+
+Made by DARK 47
